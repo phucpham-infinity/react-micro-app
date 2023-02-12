@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "frontend"],
+  "ext": ".ts,.js,.html,.tsx",
+  "ignore": ["dist"],
+  "exec": "pnpm build:fe && pnpm build:be && node ./dist/server.js"
+}
