@@ -4,7 +4,7 @@ function App() {
   const [counter, setCounter] = React.useState(1);
   return (
     <button onClick={() => setCounter((s) => s + 1)}>
-      App 2023+++{counter}
+      App 2050 +++{counter}
     </button>
   );
 }

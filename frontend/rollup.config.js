@@ -22,7 +22,7 @@ export default {
       presets: ["@babel/preset-react"],
     }),
     commonjs(),
-    typescript({ tsconfig: "./tsconfig.json" }),
+    typescript({ tsconfig: "./tsconfig.json", sourceMap: false }),
     postcss(),
     terser(),
     copy({

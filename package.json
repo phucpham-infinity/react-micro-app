@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:be": "node esbuild.config.js",
+    "build:be": "rollup -c --bundleConfigAsCjs",
     "build:fe": "pnpm run --filter react-app build",
-    "dev": "pnpx nodemon"
+    "dev:fe": "pnpm run --filter react-app dev",
+    "dev:be": "rollup -c --bundleConfigAsCjs -w",
+    "dev": "concurrently pnpm:dev:*",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "phuc.pham",
@@ -16,6 +19,17 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "esbuild": "^0.17.7"
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-run": "^3.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/express": "^4.17.17",
+    "concurrently": "^7.6.0",
+    "connect-livereload": "^0.6.1",
+    "esbuild": "^0.17.7",
+    "livereload": "^0.9.3",
+    "rollup": "^3.15.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "typescript": "^4.9.5"
   }
 }
