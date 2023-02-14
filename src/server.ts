@@ -1,22 +1,47 @@
-//@ts-nocheck
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
 
-import { demo } from "./router";
+import { demo } from "@/router";
+import { env } from "@/helpers";
 
-const app = express();
-app.use(connectLiveReload());
+if (!env("PORT")) {
+  process.exit(1);
+}
 
-const port = 5050;
-app.use(cors());
+const PORT: number = +env("PORT");
+
+export const app = express();
+app.use(morgan("combined"));
+
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    frameguard: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginOpenerPolicy: false,
+    crossOriginResourcePolicy: false,
+  })
+);
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(express.json());
 app.use(express.static("dist"));
 
-app.use("/api/*", demo);
+app.use("/", [demo]);
 
-app.get("*", (req, res) => {
-  res.sendFile("index.html", { root: "./" });
+app.get("*", (_, res) => {
+  res.sendFile("dist/index.html", { root: "./" });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+app
+  .listen(PORT, () => {
+    console.log(`Server started on port ${PORT}: http://localhost:${PORT}`);
+  })
+  .on("error", (err) => {
+    console.log("ERROR: ", err);
+  });

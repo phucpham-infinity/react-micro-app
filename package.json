@@ -1,5 +1,5 @@
 {
-  "name": "react-hello-world",
+  "name": "react-app-01",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,16 +16,26 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-run": "^3.0.1",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^18.13.0",
     "concurrently": "^7.6.0",
     "connect-livereload": "^0.6.1",
+    "dotenv": "^16.0.3",
     "esbuild": "^0.17.7",
+    "helmet": "^6.0.1",
     "livereload": "^0.9.3",
     "rollup": "^3.15.0",
     "rollup-plugin-replace": "^2.2.0",
